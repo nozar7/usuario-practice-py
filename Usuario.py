@@ -17,16 +17,16 @@ class Usuario:
     def mostrar_balance_usuario(self):
         print("Estimado",self.name,"tienes un balance de cuenta de:", self.balance_cuenta)
     def transfer_dinero(self, other_user, amount):
-        Usuario.hacer_retiro(self, amount)
-        Usuario.hacer_deposito(other_user,amount)
+        self.hacer_retiro(amount)
+        other_user.hacer_deposito(amount)
         print("se hizo la transferencia!!!")
 guido = Usuario("Guido van Rossum", "guido@python.com")
 monty = Usuario("Monty Python", "monty@python.com")
 print(guido.name)	# salida: Guido van Rossum
 print(monty.email)	# salida: Monty Python
-Usuario.hacer_retiro(guido, 2500)
-Usuario.mostrar_balance_usuario(guido)
-Usuario.mostrar_balance_usuario(monty)
-Usuario.transfer_dinero(guido, monty, 5)
-Usuario.mostrar_balance_usuario(guido)
-Usuario.mostrar_balance_usuario(monty)
+guido.hacer_retiro(2500)
+guido.mostrar_balance_usuario()
+monty.mostrar_balance_usuario()
+guido.transfer_dinero(monty, 5)
+guido.mostrar_balance_usuario()
+monty.mostrar_balance_usuario()
