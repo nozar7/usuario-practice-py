@@ -11,9 +11,11 @@ class Usuario:
     # function hacer retiro
     def hacer_retiro(self, amount):
         self.balance_cuenta -=amount
+        return self
         # print("Tienes un balance de cuenta de:", self.balance_cuenta)
     def hacer_deposito(self, amount):
         self.balance_cuenta +=amount
+        return self
     def mostrar_balance_usuario(self):
         print("Estimado",self.name,"tienes un balance de cuenta de:", self.balance_cuenta)
     def transfer_dinero(self, other_user, amount):
@@ -22,11 +24,4 @@ class Usuario:
         print("se hizo la transferencia!!!")
 guido = Usuario("Guido van Rossum", "guido@python.com")
 monty = Usuario("Monty Python", "monty@python.com")
-print(guido.name)	# salida: Guido van Rossum
-print(monty.email)	# salida: Monty Python
-guido.hacer_retiro(2500)
-guido.mostrar_balance_usuario()
-monty.mostrar_balance_usuario()
-guido.transfer_dinero(monty, 5)
-guido.mostrar_balance_usuario()
-monty.mostrar_balance_usuario()
+guido.hacer_deposito(100).hacer_deposito(200).hacer_deposito(300).hacer_retiro(50).mostrar_balance_usuario()
